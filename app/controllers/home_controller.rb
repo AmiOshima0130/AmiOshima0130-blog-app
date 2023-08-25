@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
     def index
-        @title = 'デイトラ'
+        @article = Article.first#firstは一番最初の情報をとってくる。@articleでview側にarticleの情報を渡す
     end
 
     def about
