@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   #get '/' => 'home#index'#home_controllerのindexを実行しなさい
   #get '/about' => 'home#about'
   root to: 'articles#index'#articleを表示していると分かりやすく捉えられる
+
+  resources :articles, only: [:show]
 end
