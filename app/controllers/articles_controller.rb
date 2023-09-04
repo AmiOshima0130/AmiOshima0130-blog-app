@@ -10,19 +10,20 @@ class ArticlesController < ApplicationController
     def new
       @article = Article.new
     end
-   
+
     def create
-      @article = Article.new(article_params)#データを保存する箱
-      @article.save#データを保存
-      if @article.save#もしデータが保存されていたらページに飛ぶ
-         redirect_to article_path(@article)
+      @article = Article.new(article_params)
+      if @article.save
+        redirect_to article_path(@article), notice: '保存できたよ'
       else
-         render :new
+        flash.now[:error] = '保存に失敗しました'
+        render :new
       end
     end
-    
+
     private
-    def article_params
+    def article_params#更新するタイトルを付けて○○_paramsとする。paramsのtitleとcontentだけ保存する。
       params.require(:article).permit(:title, :content)
+      #articleキーの中のtitleとcontentだけ保存を許す
     end
   end
