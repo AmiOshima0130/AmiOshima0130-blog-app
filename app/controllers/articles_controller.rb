@@ -21,6 +21,10 @@ class ArticlesController < ApplicationController
       end
     end
 
+    def edit
+      @article = Article.find(params[:id])
+    end
+    
     private
     def article_params#更新するタイトルを付けて○○_paramsとする。paramsのtitleとcontentだけ保存する。
       params.require(:article).permit(:title, :content)
