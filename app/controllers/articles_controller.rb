@@ -35,6 +35,12 @@ class ArticlesController < ApplicationController
       end
     end
 
+    def destroy
+      article = Article.find(params[:id])
+      article.destroy!#!は例外が発生したときに処理をストップさせる
+      redirect_to root_path, notice: '削除に成功しました'
+    end
+    
     private
     def article_params#更新するタイトルを付けて○○_paramsとする。paramsのtitleとcontentだけ保存する。
       params.require(:article).permit(:title, :content)
