@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
     end
 
     def edit
-      @article = current_user.articles.find(params[:id])#セキュリティーに関わるので必ずcurrent_userのみが更新できるように。
+      @article = current_user.articles.find(params[:id])#セキュリティーに関わるので必ずcurrent_user=自分のみが更新できるように。
     end
 
     def update
@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
-      article = Article.find(params[:id])
+      article = current_user.articles.find(params[:id])
       article.destroy!#!は例外が発生したときに処理をストップさせる
       redirect_to root_path, notice: '削除に成功しました'
     end
