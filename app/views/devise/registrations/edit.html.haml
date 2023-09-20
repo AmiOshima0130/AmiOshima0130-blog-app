@@ -8,15 +8,15 @@
         = f.label :email
       %div
         = f.email_field :email, autofocus: true, autocomplete: "email", class: 'text'
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       %div
         Currently waiting confirmation for: #{resource.unconfirmed_email}
     .field
       %div
         = f.label :password
-      %i (leave blank if you don't want to change it)
+        %i (leave blank if you don't want to change it)
       %div
-        = f.password_field :password, autocomplete: "new-password"
+        = f.password_field :password, autocomplete: "new-password", class: 'text'
       - if @minimum_password_length
         %br/
         %em
@@ -32,7 +32,7 @@
         = f.label :current_password
         %i (we need your current password to confirm your changes)
       %div
-        = f.password_field :current_password, autocomplete: "current-password"
+        = f.password_field :current_password, autocomplete: "current-password", class: 'text'
     .actions
       = f.submit "Update", class: 'btn-primary'
   %h3 Cancel my account
