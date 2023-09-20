@@ -24,6 +24,8 @@ class Article < ApplicationRecord
 
     validate :validate_title_and_content_length#独自に追加するときはvalidate
 
+    belongs_to :user#articleとuserを紐づける
+
     def display_created_at
         I18n.l(self.created_at, format: :default)
     end
