@@ -30,6 +30,10 @@ class Article < ApplicationRecord
         I18n.l(self.created_at, format: :default)
     end
 
+    def author_name
+        user.display_name
+    end
+
     private
     def validate_title_and_content_length#独自のvalidationはprivateで自分で書く
         char_count = self.title.length + self.content.length #char_count => character count
