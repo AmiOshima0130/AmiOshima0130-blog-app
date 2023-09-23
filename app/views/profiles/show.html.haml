@@ -9,4 +9,8 @@
         .profilePage_user_actionButton
           =link_to 'Edit', edit_profile_path
       .profilePage_user_introduction
-        あいうえおかきくけこさしすせそたちつてとなにぬねの       
+        あいうえおかきくけこさしすせそたちつてとなにぬねの 
+
+  - current_user.articles.each do |article|
+    = render 'commons/article', article: article#commons/articles/articleの部分テンプレートが使える
+
