@@ -23,6 +23,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :articles, dependent: :destroy#userとarticlesを紐づける。userが削除されたら記事も削除される。
+  has_one :profile, dependent: :destroy#profileからみてuserはひとつ
 
   def has_written?(article)
     articles.exists?(id: article.id)
