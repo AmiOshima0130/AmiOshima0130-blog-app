@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   #get '/about' => 'home#about'
   root to: 'articles#index'#articleを表示していると分かりやすく捉えられる
 
-  resources :articles
+  resources :articles do
+    resources :comments, only: [:new, :create]
+  end
 end
