@@ -23,12 +23,27 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :articles, dependent: :destroy#userとarticlesを紐づける。userが削除されたら記事も削除される。
+  has_one :profile, dependent: :destroy#profileからみてuserはひとつ
+
+  delegate :birthday, :age, :gender, to: :profile, allow_nil: true
 
   def has_written?(article)
     articles.exists?(id: article.id)
   end
 
   def display_name
-    self.email.split('@').first
+    profile&.nickname || self.email.split('@').first#nicknameがゼロじゃない、かつemailを@で分けて最初をとる
+  end
+
+  def prepare_profile
+    profile || build_profile
+  end
+
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'default-avatar.png'
+    end
   end
 end
