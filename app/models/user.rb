@@ -25,7 +25,7 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy#userとarticlesを紐づける。userが削除されたら記事も削除される。
   has_one :profile, dependent: :destroy#profileからみてuserはひとつ
 
-  delegate :birthday, :gender, to: :profile, allow_nil: true
+  delegate :birthday, :age, :gender, to: :profile, allow_nil: true
 
   def has_written?(article)
     articles.exists?(id: article.id)
@@ -34,7 +34,7 @@ class User < ApplicationRecord
   def display_name
     profile&.nickname || self.email.split('@').first#nicknameがゼロじゃない、かつemailを@で分けて最初をとる
   end
-  
+
   def prepare_profile
     profile || build_profile
   end
