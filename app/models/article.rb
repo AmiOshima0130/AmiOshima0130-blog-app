@@ -25,6 +25,7 @@ class Article < ApplicationRecord
     validate :validate_title_and_content_length#独自に追加するときはvalidate
 
     has_many :comments, dependent: :destroy#記事が消えたらコメントも消える
+    has_many :likes, dependent: :destroy
     belongs_to :user#articleとuserを紐づける
 
     def display_created_at
