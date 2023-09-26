@@ -24,6 +24,7 @@ class User < ApplicationRecord
   
   has_many :articles, dependent: :destroy#userとarticlesを紐づける。userが削除されたら記事も削除される。
   has_many :likes, dependent: :destroy
+  has_many :favorite_articles, through: :likes, source: :article
   has_one :profile, dependent: :destroy#profileからみてuserはひとつ
 
   delegate :birthday, :age, :gender, to: :profile, allow_nil: true

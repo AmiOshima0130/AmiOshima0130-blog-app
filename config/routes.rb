@@ -16,4 +16,5 @@ root to: 'articles#index'#articleを表示していると分かりやすく捉�
   end
   
   resource :profile, only: [:show, :edit, :update]
+  resources :favorites, only: [:index]
 end
