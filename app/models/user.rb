@@ -31,7 +31,11 @@ class User < ApplicationRecord
   def has_written?(article)
     articles.exists?(id: article.id)
   end
-
+  
+  def has_liked?(article)
+    likes.exists?(article_id: article.id)
+  end
+  
   def display_name
     profile&.nickname || self.email.split('@').first#nicknameがゼロじゃない、かつemailを@で分けて最初をとる
   end
