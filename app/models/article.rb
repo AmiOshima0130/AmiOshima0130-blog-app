@@ -36,6 +36,10 @@ class Article < ApplicationRecord
         user.display_name
     end
 
+    def like_count
+      likes.count
+    end
+
     private
     def validate_title_and_content_length#独自のvalidationはprivateで自分で書く
         char_count = self.title.length + self.content.length #char_count => character count
