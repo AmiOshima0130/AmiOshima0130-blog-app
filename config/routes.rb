@@ -12,7 +12,7 @@ root to: 'articles#index'#articleを表示していると分かりやすく捉�
   resources :articles do  
     resources :comments, only: [:new, :create]
     
-    resource :like, only: [:create]
+    resource :like, only: [:create, :destroy]
   end
   
   resource :profile, only: [:show, :edit, :update]
