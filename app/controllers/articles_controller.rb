@@ -46,8 +46,8 @@ class ArticlesController < ApplicationController
 
     private
     def article_params#更新するタイトルを付けて○○_paramsとする。paramsのtitleとcontentだけ保存する。
-      params.require(:article).permit(:title, :content)
-      #articleキーの中のtitleとcontentだけ保存を許す
+      params.require(:article).permit(:title, :content, :eyecatch)
+      #articleキーの中のtitleとcontentとeyecatchだけ保存を許す
     end
 
     def set_article
